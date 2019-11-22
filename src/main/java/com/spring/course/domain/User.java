@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "owner")
+@Entity(name = "user")
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
