@@ -12,12 +12,12 @@ import com.spring.course.domain.Request;
 import com.spring.course.domain.enums.RequestState;
 
 @Repository
-public interface RequestRepository extends JpaRepository<Request, Long>{
+public interface RequestRepository extends JpaRepository<Request, Integer>{
 	
-	public List<Request> findAllByOwnerId(Long id);
+	public List<Request> findAllByOwnerId(Integer id);
 	
 	@Transactional(readOnly = false)
 	@Modifying
 	@Query("UPDATE request SET state = ?2 WHERE id = ?1")
-	public int updateStatus(Long id, RequestState state);
+	public int updateStatus(Integer id, RequestState state);
 }

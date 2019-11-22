@@ -1,4 +1,4 @@
-package com.spring.course.repository.test;
+package com.spring.course.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,12 +29,12 @@ public class UserRepositoryTest {
 		User user = new User(null, "Robert", "robert@gmail.com", "admin", "83986670767", Role.ADMINISTRATOR, null, null);
 		User createdUser = userRepository.save(user);
 		
-		assertThat(createdUser.getId()).isEqualTo(1L);
+		assertThat(createdUser.getId()).isEqualTo(1);
 	}
 	
 	@Test
 	public void updateTest() {
-		User user = new User(1L, "José Robert", "robert@gmail.com", "admin", "83986670767", Role.ADMINISTRATOR, null, null);
+		User user = new User(1, "José Robert", "robert@gmail.com", "admin", "83986670767", Role.ADMINISTRATOR, null, null);
 		User updateUser = userRepository.save(user);
 		
 		assertThat(updateUser.getName()).isEqualTo("José Robert");
@@ -42,7 +42,7 @@ public class UserRepositoryTest {
 	
 	@Test
 	public void searchByIdTest() {
-		Optional<User> result = userRepository.findById(1L);
+		Optional<User> result = userRepository.findById(1);
 		User user = result.get();
 		
 		assertThat(user.getPassword()).isEqualTo("admin");

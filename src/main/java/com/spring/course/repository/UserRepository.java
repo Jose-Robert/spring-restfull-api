@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.spring.course.domain.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Integer>{
  
 	@Query("SELECT u FROM user u WHERE email = ?1 AND password = ?2")
 	public Optional<User> login(String email, String password);

@@ -34,9 +34,9 @@ public class RequestStage implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	
-	@Column(name = "realization_date", nullable = false)
+	@Column(name = "realization_date", nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date realizationDate;
 	

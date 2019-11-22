@@ -1,4 +1,4 @@
-package com.spring.course.repository.test;
+package com.spring.course.repository;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -29,20 +29,20 @@ public class RequestRepositoryTest {
 	@Test
 	public void saveTest() {
 		User owner = new User();
-		owner.setId(1L);
+		owner.setId(1);
 		
 		Request resquest =  new Request(null, "Novo Notebook Dell", "Pretendo Obter Notebook Dell", new Date(), null, owner, RequestState.OPEN);
 		Request createdRequest = requestRepository.save(resquest);
 		
-		assertThat(createdRequest.getId()).isEqualTo(1L);
+		assertThat(createdRequest.getId()).isEqualTo(1);
 	}
 	
 	@Test
 	public void updateTest() {
 		User owner = new User();
-		owner.setId(1L);
+		owner.setId(1);
 		
-		Request resquest =  new Request(1L, "Novo Notebook Dell", "Pretendo Obter Notebook Dell, de 8GB RAM", new Date(), null, owner, RequestState.OPEN);
+		Request resquest =  new Request(1, "Novo Notebook Dell", "Pretendo Obter Notebook Dell, de 8GB RAM", new Date(), null, owner, RequestState.OPEN);
 		Request updateRequest = requestRepository.save(resquest);
 		
 		assertThat(updateRequest.getDescription()).isEqualTo("Pretendo Obter Notebook Dell, de 8GB RAM");
@@ -50,7 +50,7 @@ public class RequestRepositoryTest {
 	
 	@Test
 	public void searchByIdTest() {
-		Optional<Request> result = requestRepository.findById(1L);
+		Optional<Request> result = requestRepository.findById(1);
 		Request resquest = result.get();
 		
 		assertThat(resquest.getSubject()).isEqualTo("Novo Notebook Dell");
@@ -65,14 +65,14 @@ public class RequestRepositoryTest {
 	
 	@Test
 	public void ListByOwnerIdTest() {
-		List<Request> requests = requestRepository.findAllByOwnerId(1L);
+		List<Request> requests = requestRepository.findAllByOwnerId(1);
 		
 		assertThat(requests.size()).isEqualTo(1);
 	}
 	
 	@Test
 	public void updateStatusTest() {
-		int affectedRows = requestRepository.updateStatus(1L, RequestState.IN_PROGRESS);
+		int affectedRows = requestRepository.updateStatus(1, RequestState.IN_PROGRESS);
 		
 		assertThat(affectedRows).isEqualTo(1);
 	}
