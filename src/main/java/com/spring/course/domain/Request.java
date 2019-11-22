@@ -53,8 +53,8 @@ public class Request implements Serializable{
 	private List<RequestStage> stage = new ArrayList<RequestStage>();
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", nullable = false)
-	private User user;
+	@JoinColumn(name = "owner_id", nullable = false)
+	private User owner;
 	
 	@Column(length = 12, nullable = false)
 	@Enumerated(EnumType.STRING)

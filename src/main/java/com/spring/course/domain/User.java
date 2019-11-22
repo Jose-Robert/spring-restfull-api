@@ -24,7 +24,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "user")
+@Entity(name = "owner")
 public class User implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -49,10 +49,10 @@ public class User implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "owner")
 	private List<Request> request = new ArrayList<Request>();
 	
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "owner")
 	private List<RequestStage> stage =  new ArrayList<RequestStage>();
 
 }
