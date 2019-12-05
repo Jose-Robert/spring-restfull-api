@@ -1,0 +1,23 @@
+version: '3.4'
+services:
+   app:
+      image: spring-course
+      container_name: spring-course
+      ports:
+      - 8080:8080
+      depends_on:
+      - db
+   db:
+      image: mysql:8.0.18
+      container_name: db
+      environment:
+      - MYSQL_USER=root
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=spring_db
+      ports:
+      - 3306:3306
+   adminer:
+      image: adminer:latest
+      container_name: adminer
+      ports:
+      - 8081:8080

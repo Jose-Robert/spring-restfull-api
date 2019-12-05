@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.spring.course.domain.enums.RequestState;
 
 import lombok.AllArgsConstructor;
@@ -49,6 +50,7 @@ public class Request implements Serializable{
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date creationDate;
 	
+	@Getter(onMethod = @__({@JsonIgnore}))
 	@OneToMany(mappedBy = "request")
 	private List<RequestStage> stage = new ArrayList<RequestStage>();
 	
