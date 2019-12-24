@@ -2,6 +2,8 @@ package com.spring.course.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +17,8 @@ import com.spring.course.domain.enums.RequestState;
 public interface RequestRepository extends JpaRepository<Request, Integer>{
 	
 	public List<Request> findAllByOwnerId(Integer id);
+	
+	public Page<Request> findAllByOwnerId(Integer id, Pageable page);
 	
 	@Transactional(readOnly = false)
 	@Modifying
